@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "jsxFactory": "app.h",
+    "jsxFragmentFactory": "app.Fragment",
+    "lib": ["dom", "es2015", "es5"],
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "importHelpers": true,
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}
