@@ -12,7 +12,9 @@
     "Ch4-L4": "npm --prefix ch4/L4-Routing run start",
     "Ch4-L5": "npm --prefix ch4/L5-Directives run start",
     "Ch4-L6": "npm --prefix ch4/L6-DOM run start",
-    "Ch4-L7": "npm --prefix ch4/L7-Reactivity run start"
+    "Ch4-L7": "npm --prefix ch4/L7-Reactivity run start",
+    "Ch5-L1": "npm --prefix ch5/L1-github run start",
+    "Ch5-L2": "npm --prefix ch5/L2-firebase run start"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +27,7 @@
     "eslint": "^7.16.0",
     "apprun-dev-server": "^1.1.1",
     "jest": "^26.6.3",
+    "node-fetch": "^2.6.1",
     "npm-run-all": "^4.1.5",
     "source-map-loader": "^2.0.0",
     "ts-jest": "^26.4.4",
