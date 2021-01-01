@@ -7,7 +7,7 @@ const get_token = () => {
 const fetch_github = async (url, payload?) => {
   const response = await fetch(url, { ...payload,
     headers: {
-      'Accept': 'application/vnd.github.v3+json',
+      'Accept': 'application/json',
       'Authorization': `Bearer ${get_token()}`
     },
   });
@@ -17,6 +17,11 @@ const fetch_github = async (url, payload?) => {
   return results;
 };
 
+const graphql = async query => fetch_github('https://api.github.com/graphql', {
+  method: 'POST',
+  body: JSON.stringify({ query })
+});
+
 export default {
 
   authenticated: () => {
@@ -25,7 +30,7 @@ export default {
 
   current_user: () => fetch_github('https://api.github.com/user'),
 
-  getGists: async userId => fetch_github(`https://api.github.com/users/${userId}/gists`),
+  getGists: async (userId, page=1, size=20) => fetch_github(`https://api.github.com/users/${userId}/gists?per_page=${size}&page=${page}`),
 
   newGist: gist => fetch_github('https://api.github.com/gists', {
     method: 'POST',
@@ -43,6 +48,17 @@ export default {
     method: 'DELETE'
   }),
 
-  gist_link: id => `https://gist.github.com/${id}`
+  gist_link: id => `https://gist.github.com/${id}`,
+
+  count: async () => {
+    const result = await graphql(`query {
+  viewer {
+    gists(privacy: ALL) {
+      totalCount
+    }
+  }
+}`);
+    return result.data.viewer.gists.totalCount;
+  }
 
 };
