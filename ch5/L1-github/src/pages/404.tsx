@@ -1,6 +1,6 @@
 import { app, Component } from 'apprun';
 
-export default class ContactComponent extends Component {
+export default class Page404Component extends Component {
   state = 'Contact';
 
   view = state => <div>
