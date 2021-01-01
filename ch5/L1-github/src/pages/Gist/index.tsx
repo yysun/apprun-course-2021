@@ -26,7 +26,7 @@ const Gist = ({ id, html_url, description, files, owner, is_public }) => <tr>
     {is_public ? '' : <i class=" fa fa-lock" />}
   </td>
   <td>
-    <a href="#" $onclick={ ['delete-gist', id]}><i class="fa fa-trash"/></a>
+    <a href="#" $onclick={ ['confirm-delete', id]}><i class="fa fa-trash"/></a>
   </td>
 </tr>;
 
@@ -71,7 +71,20 @@ export default class GistComponent extends Component {
         app.run('#401');
       }
     },
-    'delete-gist': async (state, id, e) => {
+    'confirm-delete': (state, id, e) => {
+      e.preventDefault();
+      app.run('@show-modal', {
+        title: 'Confirm',
+        body: <>
+          <div>Are you sure you want to delete the Gist? </div>
+          <div>
+            <a href={api.gist_link(id)} target="_blank">{api.gist_link(id)}</a>
+          </div>
+        </>,
+        onOK: ['/del-gist', id]
+      });
+    },
+    '/delete-gist': async (state, id, e) => {
       e.preventDefault();
       try {
         const gists = state.gists.filter(gist => gist.id !== id);

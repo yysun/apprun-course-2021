@@ -15,7 +15,7 @@ export default class NotesAsideComponent extends Component {
           { note }
         </div>)}
         <div class="list-group-item text-right">
-          {notes.length > 0 && <button type="button" class="btn btn-sm" $onclick={['del-confirm', article]}>
+          {notes.length > 0 && <button type="button" class="btn btn-sm" $onclick={['confirm-delete', article]}>
             <i class="fa fa-trash"></i>
           </button>}
           <button type="button" class="btn btn-sm" $onclick="add">
@@ -63,7 +63,7 @@ export default class NotesAsideComponent extends Component {
       app.run('/edit-note', state);
       return state;
     },
-    'del-confirm': (state) => {
+    'confirm-delete': (state) => {
       app.run('@show-modal', {
         title: 'Confirm',
         body: `Are you sure you want to delete ${state.notes.length} note(s)?`,
