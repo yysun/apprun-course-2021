@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const url = require('url');
 const querystring = require('querystring');
 
-const REDIRECT = '<html><head><meta http-equiv="refresh"content=0;url="/" ></head></html>';
+const REDIRECT = '<html><head><meta http-equiv="refresh"content=0;url="/#Gist" ></head></html>';
 
 const github_oauth = (req, res, next) => {
   const pathname = url.parse(req.url).pathname;
@@ -31,7 +31,7 @@ const github_oauth = (req, res, next) => {
           res.writeHead(200, {
             'Content-Type': 'text/html',
             'Content-Length': REDIRECT.length,
-            'Set-Cookie': '_token=' + json.access_token+';path=/',
+            'Set-Cookie': '_token=' + json.access_token +';path=/;max-age=' + 6*30*24*60*60*1000,
           });
           res.end(REDIRECT);
         }
