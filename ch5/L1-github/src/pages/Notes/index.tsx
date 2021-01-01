@@ -7,11 +7,11 @@ const gist_link = id => `https://gist.github.com/${id}`;
 const Card = ({ article, notes }) => <div class="col-12 col-lg-4 col-md-6 col-sm-12 mb-2">
   <div class="card h-100 w-100 d-inline-block d-flex flex-column">
     {article.cover_image && <img class="card-img-top" src={article.cover_image} alt="" />}
-    <div class="card-body">
+    <div class="card-body" style="cursor: pointer" $onclick={['/display-note', article, notes]}>
       <a href={`#Article${article.path}`}>
         <h5 class="card-title">{article.title}</h5>
       </a>
-      <div style="cursor: pointer" $onclick={['/display-note', article, notes]}>
+      <div>
         {notes.map(note => <p>{note}</p>)}
       </div>
     </div>
