@@ -26,6 +26,7 @@ const Card = ({ article, notes }) => <div class="col-12 col-lg-4 col-md-6 col-sm
 </div>;
 
 export default class NotesComponent extends Component {
+
   state = [];
 
   view = state => <div class="row">
@@ -34,6 +35,12 @@ export default class NotesComponent extends Component {
 
   update = {
     '#Notes': () => api.notes(),
+    '/edit-note': (state, { article, notes }) => {
+      state.forEach((note) => {
+        if(note.article.id === article.id) { note.notes = notes; }
+      });
+      return state;
+    },
     'add-gist': async (state, article, notes, e) => {
       e.preventDefault();
       try {
@@ -56,9 +63,9 @@ export default class NotesComponent extends Component {
         api.save(article.id, { article, notes });
         app.run('@show-modal', {
           title: 'Created a gist',
-          body: `_html:<a href="${gist_link(article.gist_id)}" target="_blank">
-            ${gist_link(article.gist_id)}
-          </a>` });
+          body: <a href="${gist_link(article.gist_id)}" target="_blank">
+            {gist_link(article.gist_id)}
+          </a> });
         return state;
       } catch (ex) {
         app.run('@show-modal', { title: 'Unable to create gist', body: ex });

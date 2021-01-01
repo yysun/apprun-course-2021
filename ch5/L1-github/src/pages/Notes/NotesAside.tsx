@@ -51,6 +51,7 @@ export default class NotesAsideComponent extends Component {
         article: { id: state.article.id, path, title, cover_image },
         notes: state.notes
       });
+      app.run('/edit-note', state);
       return state;
     }
   };
