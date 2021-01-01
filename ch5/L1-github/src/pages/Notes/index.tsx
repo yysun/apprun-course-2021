@@ -29,18 +29,27 @@ export default class NotesComponent extends Component {
 
   state = [];
 
-  view = state => <div class="row">
-    {state.map(note => <Card {...note}/>)}
-  </div>;
+  view = (state) => {
+    if (location.hash.startsWith('#Notes')) {
+      return <div class="row">
+        {state.map(note => <Card {...note} />)}
+      </div>;
+    }
+  };
 
   update = {
     '#Notes': () => api.notes(),
+    '/add-note': (state, note) => {
+      state.push(note);
+      return state;
+    },
     '/edit-note': (state, { article, notes }) => {
       state.forEach((note) => {
         if(note.article.id === article.id) { note.notes = notes; }
       });
       return state;
     },
+    '/del-note': (state, id) => state.filter(note => note.article.id !== id),
     'add-gist': async (state, article, notes, e) => {
       e.preventDefault();
       try {

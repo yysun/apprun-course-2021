@@ -22,5 +22,8 @@ export default {
     } else {
       localStorage.removeItem(id);
     }
+  },
+  del: (id) => {
+    localStorage.removeItem(prefix + id);
   }
 };

@@ -2,7 +2,8 @@ import { app, Component } from 'apprun';
 import api from './NotesApi';
 
 export default class NotesAsideComponent extends Component {
-  state = {};
+
+  state = { article: {}, notes: [] };
 
   view = ({ article, notes }) => article
     ?
@@ -14,6 +15,9 @@ export default class NotesAsideComponent extends Component {
           { note }
         </div>)}
         <div class="list-group-item text-right">
+          {notes.length > 0 && <button type="button" class="btn btn-sm" $onclick={['del-confirm', article]}>
+            <i class="fa fa-trash"></i>
+          </button>}
           <button type="button" class="btn btn-sm" $onclick="add">
             <i class="fa fa-plus"></i> Add ...
           </button>
@@ -41,17 +45,34 @@ export default class NotesAsideComponent extends Component {
     },
     add: (state) => {
       state.notes.push('');
+      app.run('/add-note', state);
       return state;
     },
     edit: (state, idx, e) => {
       const text = e.target.textContent;
-      state.notes[idx] = text;
+      if (text) {
+        state.notes[idx] = text;
+      } else {
+        state.notes.splice(idx);
+      }
       const { path, title, cover_image } = state.article;
       api.save(state.article.id, {
         article: { id: state.article.id, path, title, cover_image },
         notes: state.notes
       });
       app.run('/edit-note', state);
+      return state;
+    },
+    'del-confirm': (state) => {
+      app.run('@show-modal', {
+        title: 'Confirm',
+        body: `Are you sure you want to delete ${state.notes.length} note(s)?`,
+        onOK: ['/del-note', state.article.id]
+      });
+    },
+    '/del-note': (state, id) => {
+      api.del(id);
+      state.notes = [];
       return state;
     }
   };
