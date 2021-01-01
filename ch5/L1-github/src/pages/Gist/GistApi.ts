@@ -43,4 +43,6 @@ export default {
     method: 'DELETE'
   }),
 
+  gist_link: id => `https://gist.github.com/${id}`
+
 };

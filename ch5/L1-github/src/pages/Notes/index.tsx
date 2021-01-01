@@ -2,8 +2,6 @@ import { app, Component } from 'apprun';
 import api from './NotesApi';
 import GistApi from '../Gist/GistApi';
 
-const gist_link = id => `https://gist.github.com/${id}`;
-
 const Card = ({ article, notes }) => <div class="col-12 col-lg-4 col-md-6 col-sm-12 mb-2">
   <div class="card h-100 w-100 d-inline-block d-flex flex-column">
     {article.cover_image && <img class="card-img-top" src={article.cover_image} alt="" />}
@@ -17,7 +15,7 @@ const Card = ({ article, notes }) => <div class="col-12 col-lg-4 col-md-6 col-sm
     </div>
     <div class="mt-auto m-3 text-right">
       {article.gist_id
-        ? <a href={gist_link(article.gist_id)} target="_blank" class="card-link"><i class="fa fa-github" /></a>
+        ? <a href={GistApi.gist_link(article.gist_id)} target="_blank" class="card-link"><i class="fa fa-github" /></a>
         : <a href='#' $onclick={['add-gist', article, notes]} class="card-link"><i class="fa fa-plus"/> Gist</a>
       }
       <a href={`#Article${article.path}`} target="_blank" class="card-link">Read...</a>
@@ -72,8 +70,8 @@ export default class NotesComponent extends Component {
         api.save(article.id, { article, notes });
         app.run('@show-modal', {
           title: 'Created a gist',
-          body: <a href="${gist_link(article.gist_id)}" target="_blank">
-            {gist_link(article.gist_id)}
+          body: <a href={GistApi.gist_link(article.gist_id)} target="_blank">
+            {GistApi.gist_link(article.gist_id)}
           </a> });
         return state;
       } catch (ex) {
