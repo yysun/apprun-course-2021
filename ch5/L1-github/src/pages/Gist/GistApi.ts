@@ -12,6 +12,7 @@ const fetch_github = async (url, payload?) => {
     },
   });
   if (!response.ok) { throw (response.status); }
+  if (response.status === 204) { return; }
   const results = await response.json();
   return results;
 };
@@ -31,14 +32,14 @@ export default {
     body: JSON.stringify(gist)
   }),
 
-  getGist: id => fetch_github(`https://api.github.com/gists${id}`),
+  getGist: id => fetch_github(`https://api.github.com/gists/${id}`),
 
-  updateGist: (id, gist) => fetch_github(`https://api.github.com/gists${id}`, {
+  updateGist: (id, gist) => fetch_github(`https://api.github.com/gists/${id}`, {
     method: 'PATCH',
     body: JSON.stringify(gist)
   }),
 
-  deleteGist: id => fetch_github(`https://api.github.com/gists${id}`, {
+  deleteGist: id => fetch_github(`https://api.github.com/gists/${id}`, {
     method: 'DELETE'
   }),
 

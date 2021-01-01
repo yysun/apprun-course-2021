@@ -1,7 +1,18 @@
 import { app, Component } from 'apprun';
 import api from './GistApi';
+import NotesApi from '../Notes/NotesApi';
 
-const Gist = ({ html_url, description, files, owner, is_public }) => <tr>
+const deleteGist = (id) => {
+  const notes = NotesApi.notes();
+  notes.forEach((note) => {
+    if (note.article.gist_id === id) {
+      delete note.article.gist_id;
+      NotesApi.save(note.article.id, note);
+    }
+  });
+};
+
+const Gist = ({ id, html_url, description, files, owner, is_public }) => <tr>
   <td>
     <a href={html_url} target="_blank">{description || '()'}</a>
   </td>
@@ -13,6 +24,9 @@ const Gist = ({ html_url, description, files, owner, is_public }) => <tr>
   </td>
   <td>
     {is_public ? '' : <i class=" fa fa-lock" />}
+  </td>
+  <td>
+    <a href="#" $onclick={ ['delete-gist', id]}><i class="fa fa-trash"/></a>
   </td>
 </tr>;
 
@@ -34,6 +48,7 @@ export default class GistComponent extends Component {
           <th scope="col">Files</th>
           <th scope="col">Owner</th>
           <th scope="col">Public</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -54,6 +69,18 @@ export default class GistComponent extends Component {
         };
       } catch {
         app.run('#401');
+      }
+    },
+    'delete-gist': async (state, id, e) => {
+      e.preventDefault();
+      try {
+        const gists = state.gists.filter(gist => gist.id !== id);
+        deleteGist(id);
+        await api.deleteGist(id);
+        app.run('@show-modal', { title: 'Deleted the gist', body: id });
+        return { ...state, gists };
+      } catch (ex) {
+        app.run('@show-modal', { title: 'Unable to delete gist', body: ex });
       }
     }
   }
