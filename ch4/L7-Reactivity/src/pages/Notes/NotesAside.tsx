@@ -43,7 +43,7 @@ export default class NotesAsideComponent extends Component {
       state.notes[idx] = text;
       const { path, title, cover_image } = state.article;
       api.save(state.article.id, {
-        article: { path, title, cover_image },
+        article: { id: state.article.id, path, title, cover_image },
         notes: state.notes
       });
       return state;
