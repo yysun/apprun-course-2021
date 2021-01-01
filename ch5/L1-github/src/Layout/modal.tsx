@@ -6,7 +6,7 @@ export default class ModalComponent extends Component {
 
   state = {}
 
-  view = ({ title, body }) => <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+  view = ({ title, body='', onOK=null }) => <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -20,7 +20,11 @@ export default class ModalComponent extends Component {
           {body}
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          {!onOK && <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>}
+          {onOK && <>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" $onclick={ onOK }>OK</button>
+          </>}
         </div>
       </div>
     </div>
