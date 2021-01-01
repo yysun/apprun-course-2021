@@ -5,9 +5,11 @@ export default class Page401Component extends Component {
   state = '401';
 
   view = () => <div>
-    <h1>Authorize with Github</h1>
+    <h3>Authorize with Github Required</h3>
     <div>
-      <a href="https://github.com/login/oauth/authorize?scope=gist&amp;client_id=fb79b79ccaa5b16086d0">Click here</a> to begin!'
+      <a href="https://github.com/login/oauth/authorize?scope=gist&amp;client_id=fb79b79ccaa5b16086d0">
+        Click to open the Github Authorization page
+      </a>
     </div>
   </div>;
 
