@@ -11,7 +11,7 @@ const fetch_github = async (url, payload?) => {
       'Authorization': `Bearer ${get_token()}`
     },
   });
-  if (response.status !== 200) { throw (response.status); }
+  if (!response.ok) { throw (response.status); }
   const results = await response.json();
   return results;
 };
@@ -28,14 +28,14 @@ export default {
 
   newGist: gist => fetch_github('https://api.github.com/gists', {
     method: 'POST',
-    gist
+    body: JSON.stringify(gist)
   }),
 
   getGist: id => fetch_github(`https://api.github.com/gists${id}`),
 
   updateGist: (id, gist) => fetch_github(`https://api.github.com/gists${id}`, {
     method: 'PATCH',
-    gist
+    body: JSON.stringify(gist)
   }),
 
   deleteGist: id => fetch_github(`https://api.github.com/gists${id}`, {
