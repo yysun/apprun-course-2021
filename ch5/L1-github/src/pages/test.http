@@ -1,0 +1,11 @@
+POST https://api.github.com/graphql
+Authorization: Bearer f422b89eea9d8f93c7a076d34be99860e3a591e6
+X-REQUEST-TYPE: GraphQL
+
+query {
+  viewer {
+    gists(privacy: ALL) {
+      totalCount
+    }
+  }
+}
