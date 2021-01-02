@@ -1,7 +1,14 @@
-import app from 'apprun';
+import { app, Component } from 'apprun';
 
-export default ({ articles }) => <ul>
-  {articles && articles.map(a =>
-    <li><a href={`#Article/${a.id}`}>{a.title}</a></li>)}
-</ul>;
+export default class ArticleListComponent extends Component {
+  state = 'ArticleList';
+
+  view = state => <div>
+    <h1>{state}</h1>
+  </div>;
+
+  update = {
+    '#ArticleList': state => state,
+  };
+}
 

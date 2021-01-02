@@ -27,8 +27,5 @@ const config = {
 app.render(document.body, <Layout {...config}/>);
 
 const element = 'my-app';
-new Home().mount(element);
-new About().mount(element);
-new Contact().mount(element);
-new Article().mount(element);
-new Page404().mount(element);
+const pages = [Home, About, Contact, Article];
+pages.forEach(C => new C().mount(element));

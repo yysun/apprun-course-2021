@@ -1,14 +1,12 @@
 import app from 'apprun';
-import Home from './Home';
-import About from './About';
-import Contact from './Contact';
-import Article from './Article';
+import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Article from './pages/Article';
 import Layout from './Layout';
 
 app.render(document.body, <Layout />);
 
 const element = 'my-app';
-new Home().mount(element);
-new About().mount(element);
-new Contact().mount(element);
-new Article().mount(element);
+const pages = [Home, About, Contact, Article];
+pages.forEach(C => new C().mount(element));

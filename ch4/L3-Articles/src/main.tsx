@@ -3,9 +3,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Article from './pages/Article';
-import Map from './pages/Map';
 import Layout from './Layout/index';
-import Page404 from './pages/404';
 
 const config = {
   title  : 'DEV Reader',
@@ -14,21 +12,18 @@ const config = {
     { text: 'Home',    'link': '#', active: true },
     { text: 'Contact', 'link': '#Contact' },
     { text: 'About',   'link': '#About' },
-    { text: 'Articles',  'link': '#Article' },
-    { text: 'Map',  'link': '#Map' }
+    { text: 'Articles',  'link': '#Article' }
   ],
   sidebar: [
     { text: 'Home',    'link': '#', active: true },
-    { text: 'Contact', 'link': '#Contact', isNew: true },
+    { text: 'Contact', 'link': '#Contact' },
     { text: 'About',   'link': '#About' },
-    { text: 'Articles',  'link': '#Article' },
-    { text: 'Map',  'link': '#Map', isNew: true }
+    { text: 'Articles',  'link': '#Article', isNew: true }
   ],
 };
 
 app.render(document.body, <Layout {...config}/>);
 
 const element = 'my-app';
-
-const pages = [Home, About, Contact, Article, Page404, Map];
+const pages = [Home, About, Contact, Article];
 pages.forEach(C => new C().mount(element));

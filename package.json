@@ -6,15 +6,16 @@
   "scripts": {
     "Ch1": "apprun-dev-server --open=ch1",
     "Ch2-L1": "npm --prefix ch2/L1-SPA run start",
+    "Ch2-L3": "npm --prefix ch2/L3-Pages run start",
+    "Ch2-L4": "npm --prefix ch2/L4-Build run start",
     "Ch4-L1": "npm --prefix ch4/L1-Site run start",
     "Ch4-L2": "npm --prefix ch4/L2-Layout run start",
-    "Ch4-L3": "npm --prefix ch4/L3-Themes run start",
+    "Ch4-L3": "npm --prefix ch4/L3-Articles run start",
     "Ch4-L4": "npm --prefix ch4/L4-Routing run start",
     "Ch4-L5": "npm --prefix ch4/L5-Directives run start",
     "Ch4-L6": "npm --prefix ch4/L6-DOM run start",
-    "Ch4-L7": "npm --prefix ch4/L7-Reactivity run start",
-    "Ch5-L1": "npm --prefix ch5/L1-github run start",
-    "Ch5-L2": "npm --prefix ch5/L2-firebase run start"
+    "Ch5-L1-L2": "npm --prefix ch5/L1-L2-Notes run start",
+    "Ch5-L3": "npm --prefix ch5/L3-Gists run start"
   },
   "keywords": [],
   "author": "",

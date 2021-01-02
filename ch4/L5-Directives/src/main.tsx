@@ -4,6 +4,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Article from './pages/Article';
 import Layout from './Layout/index';
+import Page404 from './pages/404';
 import './directives';
 
 const config = {
@@ -26,7 +27,5 @@ const config = {
 app.render(document.body, <Layout {...config}/>);
 
 const element = 'my-app';
-new Home().mount(element);
-new About().mount(element);
-new Contact().mount(element);
-new Article().mount(element);
+const pages = [Home, About, Contact, Article, Page404];
+pages.forEach(C => new C().mount(element));
