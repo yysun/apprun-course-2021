@@ -1,4 +1,4 @@
-import ArticleComponent from '../src/Article';
+import ArticleComponent from '../src/pages/Article';
 
 describe('ArticleComponent', () => {
   it('view snapshot: #1', () => {

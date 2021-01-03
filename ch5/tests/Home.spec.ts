@@ -1,5 +1,5 @@
 import app from 'apprun';
-import Home from '../src/Home';
+import Home from '../src/pages/Home';
 
 describe('component', () => {
   it('should render state upon route event', () => {

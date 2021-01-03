@@ -1,4 +1,4 @@
-import Api from '../src/Article/api';
+import Api from '../src/pages/Article/api';
 
 Api.articles = jest.fn(() =>
   new Promise((r) => {
@@ -7,6 +7,7 @@ Api.articles = jest.fn(() =>
       title: `title ${i}`,
       cover_img: `img ${i}`,
       description: `desc ${i}`,
+      path: `/${i}/${i}`
     }));
     r(articles);
   })
@@ -20,6 +21,7 @@ Api.article = jest.fn(i =>
       cover_img: `img ${i}`,
       description: `desc ${i}`,
       body_html: `body ${i}`,
+      path: `/${i}/${i}`
     };
     r(article);
   })

@@ -1,12 +1,10 @@
 import app from 'apprun';
-import Contact from '../src/Contact';
+import Contact from '../src/pages/Contact';
 
 describe('component', () => {
   it('should render state upon route event', () => {
-    const element = document.createElement('div');
-    const component = new Contact().mount(element);
-    app.run('#Contact');
-    expect(element.textContent).toBe('Contact');
+    const component = new Contact().mount();
+    component.run('#Contact');
     expect(component.state).toBe('Contact');
   });
 });
