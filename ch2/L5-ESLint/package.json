@@ -19,9 +19,9 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.11.0",
     "@typescript-eslint/parser": "^4.11.0",
-    "apprun": "^2.26.2",
+    "apprun": "^2.27.0",
     "eslint": "^7.16.0",
-    "apprun-dev-server": "^1.1.1",
+    "apprun-dev-server": "^1.2.0",
     "npm-run-all": "^4.1.5",
     "source-map-loader": "^1.1.3",
     "ts-loader": "^8.0.12",
