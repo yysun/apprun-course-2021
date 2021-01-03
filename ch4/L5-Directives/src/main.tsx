@@ -17,10 +17,10 @@ const config = {
     { text: 'Articles',  'link': '#Article' }
   ],
   sidebar: [
-    { text: 'Home',    'link': '#', active: true },
+    { text: 'Home',    'link': '#', icon:'home', active: true },
     { text: 'Contact', 'link': '#Contact', isNew: true },
     { text: 'About',   'link': '#About', isNew: true },
-    { text: 'Articles',  'link': '#Article' }
+    { text: 'Articles', 'link': '#Article', icon: 'book-open' },
   ],
 };
 

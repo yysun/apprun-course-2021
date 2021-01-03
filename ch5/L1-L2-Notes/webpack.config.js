@@ -16,7 +16,7 @@ module.exports = {
       { test: /\.js$/, use: ["source-map-loader"], enforce: "pre" }
     ]
   },
-  externals: { apprun: 'apprun', tslib: 'tslib' },
+  externals: { apprun: 'apprun' },
   devServer: {
     open: true
   },

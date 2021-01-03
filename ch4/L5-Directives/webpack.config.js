@@ -13,12 +13,12 @@ module.exports = {
   module: {
     rules: [
       { test: /\.tsx?$/, loader: 'ts-loader' },
-      { test: /\.js$/, use: ["source-map-loader"], enforce: "pre" }
+      { test: /\.js$/, use: ['source-map-loader'], enforce: 'pre' }
     ]
   },
-  externals: { apprun: 'apprun', tslib: 'tslib' },
+  externals: { apprun: 'apprun' },
   devServer: {
     open: true
   },
   devtool: 'source-map'
-}
+};

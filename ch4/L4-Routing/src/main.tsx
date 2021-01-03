@@ -17,12 +17,12 @@ const config = {
     { text: 'Articles',  'link': '#Article' }
   ],
   sidebar: [
-    { text: 'Home',    'link': '#', active: true },
+    { text: 'Home',    'link': '#', icon:'home', active: true },
     { text: 'Contact', 'link': '#Contact' },
     { text: 'About',   'link': '#About' },
-    { text: 'Article', 'link': '#Article', isNew:true },
-    { text: 'Missing Page',  'link': '#SomePage', isNew: true },
-    { text: 'Admin',  'link': '#Admin', isNew: true }
+    { text: 'Articles', 'link': '#Article', icon: 'book-open' },
+    { text: 'Admin',  'link': '#Admin', icon: 'settings', isNew: true },
+    { text: 'Missing Page',  'link': '#SomePage', isNew: true }
   ],
 };
 

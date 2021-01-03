@@ -1,15 +1,3 @@
-import { app, Component } from 'apprun';
+import app from 'apprun';
 
-export default class extends Component {
-  state = 'aside';
-
-  view = (state) => {
-    return <div>
-      {state}
-    </div>;
-  }
-
-  update = [
-    ['@aside', state => state]
-  ]
-}
+export default () => <aside class="aside-menu"></aside>;

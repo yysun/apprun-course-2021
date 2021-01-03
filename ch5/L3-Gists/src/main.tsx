@@ -22,10 +22,10 @@ const config = {
     { text: gist,     'link': '#Gist', isNew: true },
   ],
   sidebar: [
-    { text: 'Home',     'link': '#', active: true },
-    { text: 'Articles', 'link': '#Article' },
-    { text: 'Notes',    'link': '#Notes' },
-    { text: 'Gists',    'link': '#Gist', isNew: true },
+    { text: 'Home',    'link': '#', icon:'home', active: true },
+    { text: 'Articles', 'link': '#Article', icon: 'book-open' },
+    { text: 'Notes',    'link': '#Notes', icon: 'note' },
+    { text: 'Gists',    'link': '#Gist', icon:'social-github', isNew: true },
   ],
 };
 
