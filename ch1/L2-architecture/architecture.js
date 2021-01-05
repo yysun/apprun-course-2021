@@ -2,16 +2,11 @@
 const state = 0;
 
 // view is a function to render the state
-const view = state => `<div>
-  <h1>${state}</h1>
-  <button onclick="app.run('-1')">-1</button>
-  <button onclick="app.run('+1')">+1</button>
-</div>`;
+const view = state => `<h1>${state}</h1>`;
 
 // update is a collection of event handlers
 const update = {
-  '+1': state => state + 1,
-  '-1': state => state - 1
+
 };
 
 // apprun app is built with the state, view and update

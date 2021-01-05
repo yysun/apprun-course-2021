@@ -1,7 +1,7 @@
 // define initial state
 const state = 0;
 
-// view is a function to render the state
+// add functions to update the state
 const view = state => `<div>
   <h1>${state}</h1>
   <button onclick="app.run('-1')">-1</button>

@@ -23,7 +23,7 @@ const update = {
     ...state,
     counter_minus: state.counter_minus + 1,
     counter: state.counter - 1
-  }),
+  })
 };
 
 // apprun app is built with the state, view and update

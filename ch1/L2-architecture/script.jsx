@@ -2,11 +2,11 @@
 const state = 0;
 
 // view is a function to render the state
-const view = state => `<div>
+const view = state => <div>
   <h1>${state}</h1>
-  <button onclick="app.run('-1')">-1</button>
-  <button onclick="app.run('+1')">+1</button>
-</div>`;
+  <button $onclick="-1">-1</button>
+  <button $onclick="+1">+1</button>
+</div>;
 
 // update is a collection of event handlers
 const update = {
